@@ -11,7 +11,7 @@ const PokemonDetail = () => {
 	return (
 		<div>
 			{isLoading ? (
-				<p>Loading...</p>
+				<p className='text-center font-xl'>Loading...</p>
 			) : pokemon ? (
 				<PokemonAvatar pokemon={pokemon} />
 			) : (
