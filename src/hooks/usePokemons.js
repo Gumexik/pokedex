@@ -15,6 +15,7 @@ const usePokemons = () => {
 		if (selectedType) {
 			fetchPokemonByType();
 		} else fetchPokemon();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedType]);
 
 	const fetchPokemonByType = async () => {
