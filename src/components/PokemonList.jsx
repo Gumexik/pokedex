@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable react/prop-types */
 
-import PokemonCard from "../hooks/PokemonCard";
+import PokemonCard from "./PokemonCard";
 
 const PokemonList = ({ pokemons }) => {
 	return (

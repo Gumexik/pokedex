@@ -1,14 +1,34 @@
 import { useEffect, useState } from "react";
-import { POKEMON_API_POKEMON_URL, POKEMON_IMAGES_BASE_URL } from "../constants";
+import {
+	POKEMON_API_POKEMON_URL,
+	POKEMON_IMAGES_BASE_URL,
+	POKEMON_TYPES,
+} from "../constants";
 import { httpClient } from "../api/httpClient";
 
 const usePokemons = () => {
 	const [pokemons, setPokemons] = useState([]);
 	const [nextUrl, setNextUrl] = useState(POKEMON_API_POKEMON_URL);
+	const [selectedType, setSelectedType] = useState(null);
 
 	useEffect(() => {
-		fetchPokemon();
-	}, []);
+		if (selectedType) {
+			fetchPokemonByType();
+		} else fetchPokemon();
+	}, [selectedType]);
+
+	const fetchPokemonByType = async () => {
+		if (selectedType) {
+			const result = await httpClient.get(selectedType.url);
+			if (result?.data?.pokemon) {
+				const listPokemon = result.data.pokemon.map((p) =>
+					indexedPokemonToListPokemon(p.pokemon)
+				);
+				setPokemons(listPokemon);
+				setNextUrl(POKEMON_API_POKEMON_URL);
+			}
+		}
+	};
 
 	const indexedPokemonToListPokemon = (indexedPokemon) => {
 		const pokedexNumber = parseInt(
@@ -45,6 +65,10 @@ const usePokemons = () => {
 		pokemons,
 		fetchNextPage: fetchPokemon,
 		hasMorePokemon: !!nextUrl,
+		pokemonTypes: POKEMON_TYPES,
+		selectedType,
+		setSelectedType,
+		setPokemons,
 	};
 };
 
