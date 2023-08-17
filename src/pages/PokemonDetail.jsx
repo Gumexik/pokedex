@@ -23,9 +23,14 @@ const PokemonDetail = () => {
 					<div className='mt-2'>
 						<PokemonStats pokemon={pokemon} />
 					</div>
-					<Link to='/' className='px-4 py-2 rounded-md bg-blue-400'>
-						Back to pokemon list
-					</Link>
+					<div className='flex items-center justify-center'>
+						<Link
+							to='/'
+							className='px-4 py-2 rounded-md bg-blue-400 hover:bg-blue-600 hover:text-white transition-colors duration-200 ease-in-out'
+						>
+							Back to pokemon list
+						</Link>
+					</div>
 				</>
 			) : (
 				<p>Pokemon not found</p>
