@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const PokemonStats = ({ pokemon }) => {
 	return (
-		<div className='bg-gray-400 rounded-md mx-auto shadow shadow-black w-1/2 mb-4'>
+		<div className='bg-gray-400 rounded-md mx-auto shadow shadow-black md:w-1/2 mb-4'>
 			<table>
 				<thead className='border-b border-black'>
 					<tr>
